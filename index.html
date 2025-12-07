@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Q2 Quarterly Earnings — Interactive Deck</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Reveal.js from CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/black.css" id="theme">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/plugin/highlight/monokai.css">
+
+  <style>
+    .subtitle {
+      font-size: 0.6em;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- TITLE SLIDE -->
+      <section>
+        <h2>Q2 Earnings Report</h2>
+        <p class="subtitle">Technical Consultant — Major Financial Institution</p>
+        <p class="subtitle">Contact: <strong>23f1002718@ds.study.iitm.ac.in</strong></p>
+        <aside class="notes">
+          Welcome everyone. In this deck, I’ll walk through our Q2 performance,
+          focusing on revenue, profitability, and key risk indicators.
+          I’ll also highlight how this RevealJS-based deck enables modern,
+          interactive reporting for stakeholders.
+        </aside>
+      </section>
+
+      <!-- MARKDOWN SLIDE (data-markdown) -->
+      <section data-markdown>
+        <textarea data-template>
+### Agenda
+
+1. Key Financial Highlights  
+2. Revenue & Profitability Trends  
+3. Risk-Adjusted Performance  
+4. Technology & Reporting Stack  
+5. Q&A
+
+Note:
+- Use this slide to quickly set expectations.
+- Emphasize that stakeholders can drill into individual metrics in later slides.
+        </textarea>
+      </section>
+
+      <!-- SLIDE WITH FRAGMENTS / ANIMATIONS -->
+      <section>
+        <h3>Key Financial Highlights</h3>
+        <ul>
+          <li class="fragment">Net Revenue ↑ 12% YoY</li>
+          <li class="fragment">Net Interest Margin stable at 3.4%</li>
+          <li class="fragment">Cost-to-Income Ratio improved from 49% to 46%</li>
+          <li class="fragment">CET1 Capital Ratio at 13.2%</li>
+        </ul>
+        <aside class="notes">
+          Reveal each point as you speak.
+          1) Start with revenue growth and relate it to macro conditions.
+          2) Mention NIM stability despite rate volatility.
+          3) Highlight operating efficiency via improved cost-to-income.
+          4) Close with capital adequacy and prudential strength.
+        </aside>
+      </section>
+
+      <!-- MATH SLIDE: FINANCIAL FORMULA -->
+      <section>
+        <h3>Risk-Adjusted Return on Capital (RAROC)</h3>
+        <p>We evaluate business lines using a risk-adjusted metric:</p>
+        <p>
+          \[
+          \text{RAROC} =
+          \frac{\text{Expected Income} - \text{Expected Losses}}
+               {\text{Economic Capital}}
+          \]
+        </p>
+        <p class="fragment">
+          Example:  
+          \[
+          \text{RAROC} =
+          \frac{120\text{M} - 20\text{M}}{500\text{M}} = 20\%
+          \]
+        </p>
+        <aside class="notes">
+          Explain that RAROC normalizes returns by the economic capital consumed.
+          Walk through the example: 120M income, 20M expected losses, 500M capital,
+          giving 20% RAROC. Stress that we compare this with hurdle rates to decide
+          capital allocation.
+        </aside>
+      </section>
+
+      <!-- CODE SAMPLE WITH SYNTAX HIGHLIGHTING -->
+      <section>
+        <h3>Computing Metrics Programmatically</h3>
+        <pre><code class="language-python">
+def raroc(expected_income, expected_losses, economic_capital):
+    """
+    Compute Risk-Adjusted Return on Capital (RAROC).
+    All inputs are assumed in the same currency units.
+    """
+    net_income = expected_income - expected_losses
+    return net_income / economic_capital
+
+# Example:
+raroc_value = raroc(120e6, 20e6, 500e6)
+print(f"RAROC: {raroc_value:.2%}")
+        </code></pre>
+        <aside class="notes">
+          Point out that our reporting pipeline computes these metrics automatically
+          from the data warehouse. Emphasize reproducibility and transparency:
+          anyone can rerun the logic and reconcile with the dashboard outputs.
+        </aside>
+      </section>
+
+      <!-- TECHNOLOGY STACK SLIDE WITH FRAGMENTS -->
+      <section>
+        <h3>Modern Reporting Stack</h3>
+        <p>End-to-end pipeline powering this earnings deck:</p>
+        <ul>
+          <li class="fragment"><strong>Data Layer:</strong> SQL data warehouse + ETL jobs</li>
+          <li class="fragment"><strong>Analytics:</strong> Python/Pandas risk & P&amp;L models</li>
+          <li class="fragment"><strong>Presentation:</strong> RevealJS + GitHub Pages</li>
+          <li class="fragment"><strong>Distribution:</strong> Shareable URL with versioned query strings (<code>?v=1</code>, <code>?v=2</code>)</li>
+        </ul>
+        <aside class="notes">
+          Walk through the stack from data to presentation.
+          Mention how hosting on GitHub Pages reduces friction:
+          no separate infra, just push to main and share the URL.
+          Version query parameters help force cache refresh for stakeholders.
+        </aside>
+      </section>
+
+      <!-- CLOSING SLIDE -->
+      <section>
+        <h3>Thank You</h3>
+        <p>For queries, reach out at:</p>
+        <p><strong>23f1002718@ds.study.iitm.ac.in</strong></p>
+        <aside class="notes">
+          Invite questions and mention that follow-up analysis
+          (scenario tests, stress tests) can be added as additional slides
+          without changing the published URL structure.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js core -->
+  <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+
+  <!-- Plugins -->
+  <script src="https://unpkg.com/reveal.js/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
+  <script src="https://unpkg.com/reveal.js/plugin/highlight/highlight.js"></script>
+  <script src="https://unpkg.com/reveal.js/plugin/math/math.js"></script>
+
+  <script>
+    Reveal.initialize({
+      hash: true,
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ],
+      // Optional: you can tweak controls, progress bar etc.
+      controls: true,
+      progress: true,
+      slideNumber: true
+    });
+  </script>
+</body>
+</html>
